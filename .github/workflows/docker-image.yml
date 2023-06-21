@@ -16,4 +16,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker buildx build . --file gromox-core/Dockerfile --platform linux/arm64 --tag gromox-core:$(date +%s)
+      run: cd gromox-core && docker buildx build . --file Dockerfile --platform linux/arm64 --tag gromox-core:$(date +%s)
