@@ -11,9 +11,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-          matrix:
-    platform:
-      - linux/arm64
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+         - linux/arm64
     env:
       DOCKER_TARGET_PLATFORM: linux/arm64
     steps:
