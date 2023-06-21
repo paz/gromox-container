@@ -11,8 +11,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      DOCKER_TARGET_PLATFORM: linux/arm64
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file gromox-core/Dockerfile --platform linux/arm64 --tag gromox-core:$(date +%s)
+      run: docker buildx build . --file gromox-core/Dockerfile --platform linux/arm64 --tag gromox-core:$(date +%s)
