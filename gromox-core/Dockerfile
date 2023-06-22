@@ -15,9 +15,6 @@ RUN zypper in -y gromox grommunio-common mariadb-client nginx nginx-module-vts n
 RUN zypper clean --all
 # Fix bug with binaries on arm. no idea why it does this but this works.
 RUN ln -s /usr/lib64/nginx /usr/lib/nginx
-RUN mv /etc/nginx /etc/nginx.bak
-RUN ln -s /usr/share/grommunio-common/nginx /etc/nginx
-RUN ls -la /etc/nginx
 
 # Setup S6
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
