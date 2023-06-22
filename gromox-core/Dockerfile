@@ -13,8 +13,7 @@ RUN zypper --gpg-auto-import-keys ref
 RUN zypper -n refresh grommunio
 RUN zypper in -y gromox grommunio-common mariadb-client nginx nginx-module-vts nginx-module-brotli nginx-module-zstd postfix grommunio-antispam grommunio-web redis postfix-mysql vim xz tar
 RUN zypper clean --all
-RUN ls -la /usr/lib64/nginx
-RUN ls -la /usr/lib
+RUN ln -s /usr/lib/nginx /usr/lib64/nginx
 RUN nginx -t
 
 # Setup S6
