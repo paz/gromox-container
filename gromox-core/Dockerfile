@@ -1,4 +1,4 @@
-FROM opensuse/leap:15.4
+FROM --platform=linux/arm64 opensuse/leap:15.4
 
 ARG GROMMUNIO_REPO=openSUSE_Leap_15.4
 
