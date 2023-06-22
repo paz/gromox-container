@@ -13,9 +13,8 @@ RUN zypper --gpg-auto-import-keys ref
 RUN zypper -n refresh grommunio
 RUN zypper in -y gromox grommunio-common mariadb-client nginx nginx-module-vts nginx-module-brotli nginx-module-zstd postfix grommunio-antispam grommunio-web redis postfix-mysql vim xz tar
 RUN zypper clean --all
+# Fix bug with binaries on arm. no idea why it does this but this works.
 RUN ln -s /usr/lib64/nginx /usr/lib/nginx
-RUN ls -la /usr/lib/nginx/modules
-RUN nginx -t
 
 # Setup S6
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-noarch.tar.xz /tmp
